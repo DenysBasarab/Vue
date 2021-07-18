@@ -37,6 +37,8 @@
               Sign Up
             </button>
           </form>
+          <button @click="increaseCounter">Increase</button>
+          {{ foo }}
         </div>
       </div>
     </div>
@@ -46,9 +48,18 @@
 <script>
 export default {
   name: 'PageRegister',
+  computed: {
+    foo() {
+      return this.$store.state.count
+    }
+  },
   methods: {
     onSubmit() {
-      console.log('Submitted from');
+      console.log('Submitted from')
+    },
+    increaseCounter() {
+      console.log('increase counter')
+      this.$store.commit('increment')
     }
   }
 }
